@@ -54,7 +54,7 @@ MC:
  # The CASSIE announcement when the gates to surface get unlocked.
  GateLockdownUnlockCassieAnnouncement: "Attention . The gate. to surface are open"
  
- # This allows you to have a chance that randomly in the round the gates get locked.
+ # The Duration of a Broadcast.
  GateLockdownBroadcastDuration: 10
  
  # This is the broadcast that shows up when you force a gatelockdown with a given time.
