@@ -11,6 +11,10 @@ Map Control is a Plugin that allows you to use a lot of elements of the map itse
 * Enable/Disable all Tesla gates (via Config)
 * Use the toggleteslagates (or ttg) command to enable/disable them yourself
 
+# Permissions:
+* toggleteslagates (ttg) `mc.toggleteslagates`
+* gatelockdown (gl) `mc.gatelockdown`
+
 # Default config:
 ```yml
 MC:
