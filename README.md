@@ -57,7 +57,7 @@ MC:
  # The Duration of a Broadcast.
  GateLockdownBroadcastDuration: 10
  
- # This is the broadcast that shows up when you force a gatelockdown with a given time.
+ # This is the broadcast that shows up when you force a gatelockdown with a given time (%time% is the time in seconds you enter in the cmd).
  GateLockdownBroadcastwithTimer: "<b>The gates to surface have been locked down!</b>\n<i>Atleast for %time% seconds...</i>"
  
  # Are Tesla Gates enabled? (079 can always use them)
