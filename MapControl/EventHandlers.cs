@@ -53,7 +53,7 @@ namespace MapControl
             if(ToggleTeslaGates.isActive == false)
                 ev.IsTriggerable = false;
 
-            if (Plugin.Singleton.Config.TeslaBypassClasses.Contains(ev.Player.Role))
+            if (Plugin.Singleton.Config.TeslaBypassClasses.Contains(ev.Player.Role) && ev.Player.Team == Team.MTF)
             {
                 if(Plugin.Singleton.Config.TeslaMTFAnnouncementEnabled == true && hasfirstTeslaMTFAnnouncement == false)
                 {
