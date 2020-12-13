@@ -17,14 +17,14 @@ namespace MapControl
         public void OnRoundBegin()
         {
             if (Plugin.Singleton.Config.EnableRandomGatelockdowns == true)
-            {
                 Plugin.Coroutines.Add(Timing.RunCoroutine(AutomaticGateLockdown()));
-            }
 
             if(Plugin.Singleton.Config.TeslaGatesEnabled == false)
-            {
                 ToggleTeslaGates.isActive = false;
-            }
+            
+            if(Plugin.Singleton.Config.EnableRandomTeslaDisable == true)
+                Plugin.Coroutines.Add(Timing.RunCoroutine(RandomTeslaDisable()));
+
         }
 
         public void OnRestartingRound()
@@ -109,6 +109,46 @@ namespace MapControl
         {
             yield return Timing.WaitForSeconds(time);
             inLockdown = false;
+        }
+
+
+        public IEnumerator<float> RandomTeslaDisable()
+        {
+            Random r = new Random();
+            int chance = r.Next(1, 101);
+            int time = r.Next(Plugin.Singleton.Config.RandomTeslaDisableMinTime, Plugin.Singleton.Config.RandomTeslaDisableMaxTime);
+            while (true)
+            {
+                yield return Timing.WaitForSeconds(Plugin.Singleton.Config.RandomTeslaDisableIntervall);
+                if (chance <= Plugin.Singleton.Config.RandomTeslaDisableChance)
+                {
+                    if (Plugin.Singleton.Config.EnableTeslaBroadcasts)
+                        Map.Broadcast(Plugin.Singleton.Config.TeslaBroadcastDuration, Plugin.Singleton.Config.TeslaDisableBroadcast);
+
+                    if (Plugin.Singleton.Config.EnableTeslaCassie)
+                        Cassie.Message(Plugin.Singleton.Config.TeslaDisableAnnouncement, true);
+
+                    Plugin.Coroutines.Add(Timing.RunCoroutine(TeslaDisableTime(time, true)));
+                    ToggleTeslaGates.isActive = false;
+                }
+
+                yield return Timing.WaitForOneFrame;
+            }
+        }
+
+
+        public static IEnumerator<float> TeslaDisableTime(float time, Boolean wannaBroadcast)
+        {
+            yield return Timing.WaitForSeconds(time);
+           ToggleTeslaGates.isActive = true;
+
+            if (wannaBroadcast == true)
+            {
+                Map.ClearBroadcasts();
+                Map.Broadcast(Plugin.Singleton.Config.TeslaBroadcastDuration, Plugin.Singleton.Config.TeslaEnableBroadcast);
+                Cassie.Message(Plugin.Singleton.Config.TeslaEnableCassieAnnouncement, true);
+            }
+
         }
 
     }

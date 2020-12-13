@@ -43,7 +43,7 @@ namespace MapControl
         [Description("The CASSIE announcement when the gates to surface get unlocked.")]
         public string GateLockdownUnlockCassieAnnouncement { get; set; } = "Attention . The gate. to surface are open";
 
-        [Description("This allows you to have a chance that randomly in the round the gates get locked.")]
+        [Description("This allows you to set the duration of the broadcast of the Broadcast.")]
         public ushort GateLockdownBroadcastDuration { get; set; } = 10;
 
         [Description("This is the broadcast that shows up when you force a gatelockdown with a given time.")]
@@ -56,7 +56,7 @@ namespace MapControl
         public bool TeslaMTFAnnouncementEnabled { get; set; } = true;
 
         [Description("Should The Disable of the Tesla gates for MTF be announced?")]
-        public string TeslaMTFAnnouncement { get; set; } = "CONTROL TO NINETAILEDFOX . TESLA GATE DISABLED";
+        public string TeslaMTFAnnouncement { get; set; } = "CONTROL TO NINETAILEDFOX . TESLA GATE. DISABLED";
 
         [Description("The classes who do not trigger tesla gates")]
         public List<RoleType> TeslaBypassClasses { get; set; } = new List<RoleType>()
@@ -68,6 +68,9 @@ namespace MapControl
         [Description("Should The Disable of the Tesla gates for MTF be announced?")]
         public bool EnableRandomTeslaDisable { get; set; } = true;
 
+        [Description("What should the chance be for a random Tesla Disable to happen?")]
+        public int RandomTeslaDisableChance { get; set; } = 35;
+
         [Description("In what Intervall the server checks the chance for a random Tesla gates disable?")]
         public float RandomTeslaDisableIntervall { get; set; } = 180f;
 
@@ -76,6 +79,27 @@ namespace MapControl
 
         [Description("How long should a random Tesla Disable should be at maximum?")]
         public int RandomTeslaDisableMaxTime { get; set; } = 180;
+
+        [Description("With this setting you can decide if you want to see a broadcast when the Tesla gates are enabled/disabled.")]
+        public bool EnableTeslaBroadcasts { get; set; } = true;
+
+        [Description("With this setting you can decide if you want to hear a CASSIE announcement when the Tesla gates are enabled/disabled.")]
+        public bool EnableTeslaCassie { get; set; } = true;
+
+        [Description("The Announcement CASSIE makes, when the Tesla gates are disabled.")]
+        public string TeslaDisableAnnouncement { get; set; } = "Attention . tesla gate. disabled";
+
+        [Description("The Broadcast when the Tesla gates are disabled")]
+        public string TeslaDisableBroadcast { get; set; } = "<b>The Tesla gates are disabled!</b>";
+
+        [Description("You can customize the announcement when the Gates are unlocked.")]
+        public string TeslaEnableBroadcast { get; set; } = "<b>The Tesla gates are no longer disabled!</b>";
+
+        [Description("The CASSIE announcement when the Tesla gates are enabled again.")]
+        public string TeslaEnableCassieAnnouncement { get; set; } = "Attention . Telsa gates. enabled";
+
+        [Description("This allows you to set the duration of the broadcast of the Broadcast.")]
+        public ushort TeslaBroadcastDuration { get; set; } = 10;
 
     }
 
