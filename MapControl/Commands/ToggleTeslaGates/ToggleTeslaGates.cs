@@ -14,7 +14,7 @@ namespace MapControl.Commands.ToggleTeslaGates
     [CommandHandler(typeof(GameConsoleCommandHandler))]
     class ToggleTeslaGates : ParentCommand
     {
-
+        
         public static bool isActive = true;
         public ToggleTeslaGates() => LoadGeneratedCommands();
 
@@ -33,8 +33,9 @@ namespace MapControl.Commands.ToggleTeslaGates
             {
                 response = "You do not have the required permissions to run this command!";
                 return false;
-            }
 
+            }
+            
             if (arguments.Count == 0)
             {
                 if(isActive == true)

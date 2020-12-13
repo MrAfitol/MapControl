@@ -1,5 +1,6 @@
 ﻿using Exiled.API.Interfaces;
 using Exiled.Loader;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace MapControl
@@ -30,7 +31,7 @@ namespace MapControl
         [Description("With this setting you can decide if you want to hear a CASSIE announcement when gates get locked/unlocked.")]
         public bool EnableRandomGateLockdownCassie { get; set; } = true;
 
-        [Description("The Announcement CASSIE makes, when the gates are locked down")]
+        [Description("The Announcement CASSIE makes, when the gates are locked down.")]
         public string GateLockdownCassieAnnouncement { get; set; } = "Attention . The gate. to surface are now in lockdown";
 
         [Description("The Broadcast when the gates are locked down.")]
@@ -50,5 +51,32 @@ namespace MapControl
 
         [Description("Are Tesla Gates enabled? (079 can always use them)")]
         public bool TeslaGatesEnabled { get; set; } = true;
+
+        [Description("Should The Disable of the Tesla gates for MTF be announced?")]
+        public bool TeslaMTFAnnouncementEnabled { get; set; } = true;
+
+        [Description("Should The Disable of the Tesla gates for MTF be announced?")]
+        public string TeslaMTFAnnouncement { get; set; } = "CONTROL TO NINETAILEDFOX . TESLA GATE DISABLED";
+
+        [Description("The classes who do not trigger tesla gates")]
+        public List<RoleType> TeslaBypassClasses { get; set; } = new List<RoleType>()
+
+            {
+                RoleType.FacilityGuard, RoleType.NtfCadet, RoleType.NtfCommander, RoleType.NtfLieutenant, RoleType.NtfScientist
+            };
+
+        [Description("Should The Disable of the Tesla gates for MTF be announced?")]
+        public bool EnableRandomTeslaDisable { get; set; } = true;
+
+        [Description("In what Intervall the server checks the chance for a random Tesla gates disable?")]
+        public float RandomTeslaDisableIntervall { get; set; } = 180f;
+
+        [Description("How long should a random Tesla Disable should be atleast?")]
+        public int RandomTeslaDisableMinTime { get; set; } = 45;
+
+        [Description("How long should a random Tesla Disable should be at maximum?")]
+        public int RandomTeslaDisableMaxTime { get; set; } = 180;
+
     }
+
 }

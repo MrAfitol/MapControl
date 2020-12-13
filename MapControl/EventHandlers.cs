@@ -12,7 +12,8 @@ namespace MapControl
     {
 
         public static Boolean inLockdown = false;
-        
+        public static Boolean hasfirstTeslaMTFAnnouncement = false;
+
         public void OnRoundBegin()
         {
             if (Plugin.Singleton.Config.EnableRandomGatelockdowns == true)
@@ -30,12 +31,16 @@ namespace MapControl
         {
             foreach (CoroutineHandle coroutine in Plugin.Coroutines)
                 Timing.KillCoroutines(coroutine);
+
+            hasfirstTeslaMTFAnnouncement = false;
         }
 
         public void onRoundEnd(RoundEndedEventArgs ev)
         {
             foreach (CoroutineHandle coroutine in Plugin.Coroutines)
                 Timing.KillCoroutines(coroutine);
+
+            hasfirstTeslaMTFAnnouncement = false;
         }
 
 
@@ -43,9 +48,21 @@ namespace MapControl
         public void onTriggerTesla(TriggeringTeslaEventArgs ev)
         {
             if(ToggleTeslaGates.isActive == false)
+                ev.IsTriggerable = false;
+
+            if (Plugin.Singleton.Config.TeslaBypassClasses.Contains(ev.Player.Role))
             {
+                if(Plugin.Singleton.Config.TeslaMTFAnnouncementEnabled == true && hasfirstTeslaMTFAnnouncement == false)
+                {
+                    Cassie.Message(Plugin.Singleton.Config.TeslaMTFAnnouncement);
+                    hasfirstTeslaMTFAnnouncement = true;
+                }
+
                 ev.IsTriggerable = false;
             }
+                
+
+
         }
 
 
