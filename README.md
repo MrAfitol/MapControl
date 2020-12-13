@@ -4,12 +4,18 @@ Map Control is a Plugin that allows you to use a lot of elements of the map itse
 ## Gatelockdown System
 * Gate A and B can randomly be locked for a random amount of time
 * Broadcasts and CASSIE announcements go with the locks/unlocks
-* The Gates can also be locked at the beginning of the round (with a extra chance)
 * The gatelockdown command can also be used to force a GateLockdown
+
+## TeslaDisable System
+* All Tesla gates can be randomly disabled with a random ammount of time
+* Broadcast and CASSIE announcements
+* The classes which are able to bypass are configurable
+* You can set a custom CASSIE Announcement for the first time NTF bypass a disabled Tesla gate (like in Containment Breach)
 
 ## Control the Map
 * Enable/Disable all Tesla gates (via Config)
 * Use the toggleteslagates (or ttg) command to enable/disable them yourself
+* Set and add custom Server Broadcasts
 
 # Permissions:
 * toggleteslagates (ttg) `mc.toggleteslagates`
@@ -17,7 +23,7 @@ Map Control is a Plugin that allows you to use a lot of elements of the map itse
 
 # Default config:
 ```yml
-MC:
+MapControl:
  # Enable or Disable the MapControl Plugin.
  isEnabled: true
  
