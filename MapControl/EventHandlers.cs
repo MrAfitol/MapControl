@@ -25,6 +25,9 @@ namespace MapControl
             if(Plugin.Singleton.Config.EnableRandomTeslaDisable == true)
                 Plugin.Coroutines.Add(Timing.RunCoroutine(RandomTeslaDisable()));
 
+            if (Plugin.Singleton.Config.EnableServerBroadcasts == true)
+                Plugin.Coroutines.Add(Timing.RunCoroutine(ServerBroadcast()));
+
         }
 
         public void OnRestartingRound()
@@ -147,6 +150,22 @@ namespace MapControl
                 Map.ClearBroadcasts();
                 Map.Broadcast(Plugin.Singleton.Config.TeslaBroadcastDuration, Plugin.Singleton.Config.TeslaEnableBroadcast);
                 Cassie.Message(Plugin.Singleton.Config.TeslaEnableCassieAnnouncement, true);
+            }
+
+        }
+
+        private IEnumerator<float> ServerBroadcast()
+        {
+            var broadcasts = Plugin.Singleton.Config.ServerBroadcasts;
+            Random r = new Random();
+            while (true)
+            {
+
+                yield return Timing.WaitForSeconds(Plugin.Singleton.Config.ServerBroadcastsIntervall);
+
+                Map.Broadcast(Plugin.Singleton.Config.ServerBroadcastsDuration, broadcasts[r.Next(broadcasts.Count)], Broadcast.BroadcastFlags.Normal);
+
+                yield return Timing.WaitForOneFrame;
             }
 
         }

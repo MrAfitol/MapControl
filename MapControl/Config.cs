@@ -10,6 +10,22 @@ namespace MapControl
         [Description("Enable or Disable the MapControl Plugin.")]
         public bool IsEnabled { get; set; } = true;
 
+        [Description("Do you want the MapControl Server Broadcasts enabled? You can configure them.")]
+        public bool EnableServerBroadcasts { get; set; } = false;
+
+        [Description("Welp here you can set and add Server Broadcasts.")]
+        public List<string> ServerBroadcasts { get; set; } = new List<string>()
+
+            {
+                "test1", "test2"
+            };
+
+        [Description("In which intervall you want Server Broadcasts happen.")]
+        public float ServerBroadcastsIntervall { get; set; } = 45f;
+
+        [Description("How long should a Server Broadcast be?")]
+        public ushort ServerBroadcastsDuration { get; set; } = 5;
+
         [Description("This allows you to have a chance that randomly in the round the gates get locked.")]
         public bool EnableRandomGatelockdowns { get; set; } = true;
 
