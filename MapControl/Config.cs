@@ -71,7 +71,7 @@ namespace MapControl
         [Description("Should The Disable of the Tesla gates for MTF be announced?")]
         public bool TeslaMTFAnnouncementEnabled { get; set; } = true;
 
-        [Description("Should The Disable of the Tesla gates for MTF be announced?")]
+        [Description("The Announcement that takes place when MTF get close to a disabled tesla (only the first time)?")]
         public string TeslaMTFAnnouncement { get; set; } = "CONTROL TO NINETAILEDFOX . TESLA GATE. DISABLED";
 
         [Description("The classes who do not trigger tesla gates")]
