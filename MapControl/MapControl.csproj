@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GateLockdown\Gatelockdown.cs" />
+    <Compile Include="Commands\StartDecontamination\StartDecontamination.cs" />
     <Compile Include="Commands\ToggleTeslaGates\ToggleTeslaGates.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers.cs" />
