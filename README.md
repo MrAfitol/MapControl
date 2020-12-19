@@ -16,10 +16,12 @@ Map Control is a Plugin that allows you to use a lot of elements of the map itse
 * Enable/Disable all Tesla gates (via Config)
 * Use the toggleteslagates (or ttg) command to enable/disable them yourself
 * Set and add custom Server Broadcasts
+* Start the Decontamination early (via command)
 
 # Permissions:
 * toggleteslagates (ttg) `mc.toggleteslagates`
 * gatelockdown (gl) `mc.gatelockdown`
+* startdecontamination (sd) `mc.startdecontamination`
 
 # Default config:
 Config Values | Default Value | Description
